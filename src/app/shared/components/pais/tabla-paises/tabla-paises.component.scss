@@ -1,0 +1,11 @@
+img {
+  width: 30px;
+}
+.scroll-window {
+  height: 200px; /* Altura deseada de la ventana */
+  width: 500px;
+  overflow-y: scroll; /* Habilita el desplazamiento vertical */
+}
+.list-group-item {
+    position: static;
+}

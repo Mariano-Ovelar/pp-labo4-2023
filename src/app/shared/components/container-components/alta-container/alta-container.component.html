@@ -1,0 +1,57 @@
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <!-- ====== Formulario ====== -->
+      <div>
+        <form [formGroup]="Form" (ngSubmit)="guardar()" novalidate>
+          <div class="row g-3">
+            <div>
+              <label for="">Codigo:</label>
+              <input
+                type="text"
+                [(ngModel)]="Form.value.codigo"
+                value="0"
+                name="codigo"
+                formControlName="codigo"
+              />
+            </div>
+            <div>
+              <label for="color">Color:</label>
+              <select formControlName="color" id="color">
+                <option value="">Seleccione un color</option>
+                <option value="Rojo">Rojo</option>
+                <option value="Azul">Azul</option>
+                <option value="Verde">Verde</option>
+                <option value="Amarillo">Amarillo</option>
+                <option value="Naranja">Naranja</option>
+              </select>
+            </div>
+            <div>
+              <label for="">Empresa:</label>
+              <input
+                type="text"
+                [(ngModel)]="Form.value.empresa"
+                value="2023-02-01"
+                name="empresa"
+                formControlName="empresa"
+              />
+            </div>
+            <div>
+              <label for="">Capacidad:</label>
+              <input
+                type="number"
+                [(ngModel)]="Form.value.capacidad"
+                name="capacidad"
+                formControlName="capacidad"
+                min="0"
+              />
+            </div>
+          </div>
+          <button class="w-100 btn btn-primary btn-lg" [disabled]="!Form.valid">
+            Agregar
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,21 @@
+
+<div class="scroll-window">
+  <table>
+    <tr>
+      <th>Codigo</th>
+      <th>Empresa</th>
+    </tr>
+    <tr
+      *ngFor="let container of listaContainersRecibida"
+      (click)="selecionar(container)"
+      class="lista"
+    >
+      <td *ngIf="container.docActivo && container.id">
+        {{ container.codigo }}
+      </td>
+      <td *ngIf="container.docActivo && container.id">
+        {{ container.empresa }}
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "utn-labo-4": {
+      "hosting": {
+        "simulacro-primer-Parcial": [
+          "utn-labo-4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "utn-labo-4"
+  }
+}

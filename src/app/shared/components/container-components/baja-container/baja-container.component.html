@@ -1,0 +1,58 @@
+<div class="container">
+    <main>
+      <div class="row g-5">
+        <!-- ====== Formulario ====== -->
+        <div>
+          <form [formGroup]="Form" (ngSubmit)="eliminar()" novalidate>
+            <div class="row g-3">
+              <div>
+                <label for="">Codigo:</label>
+                <input
+                  type="text"
+                  [(ngModel)]="Form.value.codigo"
+                  value="0"
+                  name="codigo"
+                  formControlName="codigo"
+                  readonly
+                />
+              </div>
+              <div>
+                <label for="">Color:</label>
+                <input
+                  name="color"
+                  type="text"
+                  [(ngModel)]="Form.value.color"
+                  formControlName="color"
+                  readonly
+                />
+              </div>
+              <div>
+                <label for="">Empresa:</label>
+                <input
+                  type="text"
+                  [(ngModel)]="Form.value.empresa"
+                  value="2023-02-01"
+                  name="empresa"
+                  formControlName="empresa"
+                  readonly
+                />
+              </div>
+              <div>
+                <label for="">Capacidad:</label>
+                <input
+                  type="number"
+                  [(ngModel)]="Form.value.capacidad"
+                  name="capacidad"
+                  formControlName="capacidad"
+                  readonly
+                />
+              </div>
+            </div>
+            <button class="w-100 btn btn-danger btn-lg" [disabled]="!Form.valid">
+              Eliminar
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>

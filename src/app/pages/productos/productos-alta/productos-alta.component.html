@@ -1,0 +1,134 @@
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <!-- ====== Formulario ====== -->
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Agregar nuevo Producto</h4>
+        <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+          <div class="row g-3">
+            <!-- ==== Descripción ==== -->
+            <div>
+              <label for="">Descripción:</label>
+              <input
+                name="descripcion"
+                type="text"
+                [(ngModel)]="form.value.descripcion"
+                formControlName="descripcion"
+              />
+              <!-- ==== Validar descripcion ==== -->
+              <div
+                class="validators"
+                *ngIf="
+                  form.controls['descripcion'].errors &&
+                  form.controls['descripcion'].dirty
+                "
+              >
+                <div *ngIf="form.controls['descripcion'].errors?.['required'] ">
+                  Ingresa Descripción
+                </div>
+                <div
+                  *ngIf="form.controls['descripcion'].errors?.['minlength'] "
+                >
+                  La Descripción no puede ser menor a 4 caracteres
+                </div>
+              </div>
+            </div>
+
+            <!-- ==== Precio ==== -->
+            <div>
+              <label for="">Precio:</label>
+              <input
+                type="number"
+                [(ngModel)]="form.value.precio"
+                value="2023-02-01"
+                name="precio"
+                formControlName="precio"
+                min="0"
+              />
+            </div>
+            <!-- ==== Validar Precio ==== -->
+            <div
+              class="validators"
+              *ngIf="
+                form.controls['precio'].errors && form.controls['precio'].dirty
+              "
+            >
+              <div *ngIf="form.controls['precio'].errors?.['required'] ">
+                Ingresa Precio valido
+              </div>
+            </div>
+            <!-- ==== Stock ==== -->
+            <div>
+              <label for="">Stock:</label>
+              <input
+                type="number"
+                [(ngModel)]="form.value.stock"
+                name="stock"
+                formControlName="stock"
+                min="0"
+              />
+              <!-- ==== Validar Stock ==== -->
+              
+            </div>
+            <!-- ==== Codigo ==== -->
+            <div>
+              <label for="">Codigo:</label>
+              <input
+                type="text"
+                [(ngModel)]="form.value.codigo"
+                value="0"
+                name="codigo"
+                formControlName="codigo"
+              />
+              <div
+                class="validators"
+                *ngIf="
+                  form.controls['codigo'].errors &&
+                  form.controls['codigo'].dirty
+                "
+              >
+                <div *ngIf="form.controls['codigo'].errors?.['required'] ">
+                  Ingresa Codigo valido
+                </div>
+              </div>
+            </div>
+            <!-- ==== Comestible ==== -->
+            <div class="col-md-6">
+              <label for="">Comestible:</label>
+              <select
+                name="comestible"
+                formControlName="comestible"
+                [(ngModel)]="form.value.comestible"
+              >
+                <option [ngValue]="true">Sí</option>
+                <option [ngValue]="false">No</option>
+              </select>
+            </div>
+            <!-- ==== País ==== -->
+            <div class="col-md-6">
+              <label for="country" class="form-label">País:</label>
+              <div *ngIf="paisSelecionado">
+                <img src="{{ paisSelecionado.flags.png }}" alt="" />
+                {{ paisSelecionado.name.common }}
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <!-- ==== Button ==== -->
+          <button class="w-100 btn btn-primary btn-lg" [disabled]="!form.valid">
+            Agregar
+          </button>
+        </form>
+      </div>
+      <!-- ====== Tabla Paises ====== -->
+      <div class="col-md-5 col-lg-4 ">
+        <app-tabla-paises
+          [listaPaisesRecibida]="listaPaises"
+          (paisElegido)="selecionPais($event)"
+        ></app-tabla-paises>
+      </div>
+    </div>
+  </main>
+</div>
+<app-spinner [activarSpinner]="spinner"></app-spinner>
+
